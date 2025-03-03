@@ -1,0 +1,16 @@
+# Use a lightweight base image
+FROM python:3.9-slim
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the script and text files into the container
+COPY scripts.py /app/scripts.py
+COPY IF-1.txt /home/data/IF-1.txt
+COPY AlwaysRememberUsThisWay-1.txt /home/data/AlwaysRememberUsThisWay-1.txt
+
+# Install any required dependencies
+RUN pip install collections
+
+# Run the script when the container starts
+CMD ["python3", "scripts.py"]
